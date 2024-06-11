@@ -1,2 +1,2 @@
-# BuyBliss
-Online shopping website using HTML, CSS, Bootstrap and JavaScript.
+# Flash
+Flash is a social media website created using JavaScript, HTML, CSS and Bootstrap.
