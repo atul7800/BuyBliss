@@ -14,6 +14,7 @@ const theme = document.querySelector('#theme');
 const themeModal = document.querySelector('.customize-theme');
 const fontSizes = document.querySelectorAll('.choose-size span');
 let root = document.querySelector(':root');
+const coloPalate = document.querySelectorAll('.choose-color span');
 
 /*******************References end**********************/
 
@@ -99,29 +100,75 @@ theme.addEventListener('click', openThemeModal);
 themeModal.addEventListener('click', closeThemeModal);
 
 /*++++++++++++++Fonts+++++++++++*/
+
+//remove active class
+const removeActiveClass = (x) => {
+    x.forEach(z => {
+        z.classList.remove('active')
+    })
+}
+
 fontSizes.forEach(size => {
     let fontSize;
-    
     size.addEventListener('click', () => {
+        removeActiveClass(fontSizes);
         if(size.classList.contains('font-size-1')){
-            fontSize = '10px' ;
-            root.style.setProperty('--sticky-top-left', '5.5rem');
-            root.style.setProperty('--sticky-top-right', '5.5rem');
+            // root.style.setProperty('--sticky-top-left', '5.5rem');
+            // root.style.setProperty('--sticky-top-right', '5.5rem');
+            fontSize = '10px';
+            size.classList.add('active');
         } else if(size.classList.contains('font-size-2')){
             fontSize = '13px';
-            root.style.setProperty('--sticky-top-left', '5.5rem');
-            root.style.setProperty('--sticky-top-right', '5.5rem');
+            size.classList.add('active');
         } else if(size.classList.contains('font-size-3')){
             fontSize = '16px';
+            size.classList.add('active');
         } else if(size.classList.contains('font-size-4')){
             fontSize = '19px';
+            size.classList.add('active');
         } else if(size.classList.contains('font-size-5')){
             fontSize = '22px';
+            size.classList.add('active');
+        } else{
+            
         }
+        document.querySelector('html').style.fontSize = fontSize;
     })
-    //changing the font size of the root html element
-    document.querySelector('html').style.fontSize = fontSize;
+    
 })
 /*____________Fonts end_________*/
+
+/*++++++++++++++Color+++++++++++*/
+coloPalate.forEach(color => {
+    let primary;
+    color.addEventListener('click', () => {
+        removeActiveClass(coloPalate)
+        if(color.classList.contains('color-1')){
+            primary = 252;
+            color.classList.add('active');
+        } else if(color.classList.contains('color-2')){
+            primary = 52;
+            color.classList.add('active');
+        } else if(color.classList.contains('color-3')){
+            primary = 352;
+            color.classList.add('active');
+        } else if(color.classList.contains('color-4')){
+            primary = 152;
+            color.classList.add('active');
+        } else if(color.classList.contains('color-5')){
+            primary = 202;
+            color.classList.add('active');
+        } else{
+            
+        }
+        root.style.setProperty('--primary-color-hue', primary);
+        //document.querySelector('html').style.
+    })
+})
+/*____________Color end_________*/
+
+/*++++++++++++++Background+++++++++++*/
+
+/*____________Background end_________*/
 
 /*---------------------Theme customization end----------------------*/
