@@ -553,6 +553,11 @@ main .container .left .profile{
     right: 0;
 }
 
+#no-result-found{
+    display: none;
+    text-align: center;
+}
+
 /*-----------messages end-----------*/
 
 /*++++++++++++++++Friend Requests++++++++++++*/
