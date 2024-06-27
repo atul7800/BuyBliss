@@ -15,6 +15,9 @@ const themeModal = document.querySelector('.customize-theme');
 const fontSizes = document.querySelectorAll('.choose-size span');
 let root = document.querySelector(':root');
 const coloPalate = document.querySelectorAll('.choose-color span');
+const bg1 = document.querySelector('.bg-1');
+const bg2 = document.querySelector('.bg-2');
+const bg3 = document.querySelector('.bg-3');
 
 /*******************References end**********************/
 
@@ -104,7 +107,7 @@ themeModal.addEventListener('click', closeThemeModal);
 //remove active class
 const removeActiveClass = (x) => {
     x.forEach(z => {
-        z.classList.remove('active')
+        z.classList.remove('active');
     })
 }
 
@@ -168,6 +171,53 @@ coloPalate.forEach(color => {
 /*____________Color end_________*/
 
 /*++++++++++++++Background+++++++++++*/
+let lightColorLightness;
+let whiteColorLightness;
+let darkColorLightness;
+
+// --dark-color-lightness:17%;
+//     --light-color-lightness:95%;
+//     --white-color-lightness:100%;
+
+const changeBg = () => {
+    root.style.setProperty('--light-color-lightness', lightColorLightness);
+    root.style.setProperty('--white-color-lightness', whiteColorLightness);
+    root.style.setProperty('--dark-color-lightness', lightColorLightness);
+}
+
+bg1.addEventListener('click', () => {
+    bg1.classList.add('active');
+    removeActiveClass(bg2);
+    removeActiveClass(bg3);
+
+    //reset background color to white
+    window.location.reload();
+})
+
+bg2.addEventListener('click', () => {
+    darkColorLightness = "95%";
+    whiteColorLightness = "20%";
+    lightColorLightness = "15%";
+
+    bg2.classList.add('active');
+    removeActiveClass(bg1);
+    removeActiveClass(bg3);
+
+    changeBg();
+})
+
+bg3.addEventListener('click', () => {
+    darkColorLightness = "95%";
+    whiteColorLightness = "10%";
+    lightColorLightness = "0%";
+
+    bg3.classList.add('active');
+    removeActiveClass(bg1);
+    removeActiveClass(bg2);
+
+    changeBg();
+})
+
 
 /*____________Background end_________*/
 
