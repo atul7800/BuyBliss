@@ -9,6 +9,12 @@ const messageSearch = document.querySelector('#message-search');
 //Sidebar
 const menuItems = document.querySelectorAll('.menu-item');
 
+//Theme
+const theme = document.querySelector('#theme');
+const themeModal = document.querySelector('.customize-theme');
+const fontSizes = document.querySelectorAll('.choose-size span');
+let root = document.querySelector(':root');
+
 /*******************References end**********************/
 
 
@@ -79,5 +85,43 @@ messagesNotification.addEventListener('click', () => {
 /*---------------------Messages end-----------------*/
 
 /*=======================Theme customization========================*/
+const openThemeModal = () => {
+    themeModal.style.display = 'grid';
+}
+
+const closeThemeModal = (e) => {
+    if(e.target.classList.contains('customize-theme')){
+        themeModal.style.display = 'none';
+    }
+}
+
+theme.addEventListener('click', openThemeModal);
+themeModal.addEventListener('click', closeThemeModal);
+
+/*++++++++++++++Fonts+++++++++++*/
+fontSizes.forEach(size => {
+    let fontSize;
+    
+    size.addEventListener('click', () => {
+        if(size.classList.contains('font-size-1')){
+            fontSize = '10px' ;
+            root.style.setProperty('--sticky-top-left', '5.5rem');
+            root.style.setProperty('--sticky-top-right', '5.5rem');
+        } else if(size.classList.contains('font-size-2')){
+            fontSize = '13px';
+            root.style.setProperty('--sticky-top-left', '5.5rem');
+            root.style.setProperty('--sticky-top-right', '5.5rem');
+        } else if(size.classList.contains('font-size-3')){
+            fontSize = '16px';
+        } else if(size.classList.contains('font-size-4')){
+            fontSize = '19px';
+        } else if(size.classList.contains('font-size-5')){
+            fontSize = '22px';
+        }
+    })
+    //changing the font size of the root html element
+    document.querySelector('html').style.fontSize = fontSize;
+})
+/*____________Fonts end_________*/
 
 /*---------------------Theme customization end----------------------*/
